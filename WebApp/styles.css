@@ -1,0 +1,232 @@
+:root {
+    --primary: #0B1F3A;
+    --accent: #FFD700;
+    --background: #F4F6F9;
+    --text: #222222;
+}
+
+* {
+    box-sizing:border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--background);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+section {
+    padding: 30px;
+    margin: 25px auto;
+}
+
+header {
+    background-color: var(--primary);
+    color: white;
+    padding: 15px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header h1 {
+    margin: 5px;
+    color: var(--accent);
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+nav li {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration:none;
+    font-weight:lighter;
+}
+
+nav ul li a:hover {
+    color: var(--accent);
+}
+
+#home {
+    max-width: 100%;
+    min-height: 300px;
+    background-color:cornsilk;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+#home h2 {
+    font-size: 35px;
+}
+
+#home a {
+    display:inline-block;
+    background-color: var(--accent);
+    color: var(--primary);
+    padding: 12px 25px;
+    margin: 20px;
+    border-radius: 9px;
+    text-decoration:none;
+    font-weight: bold;
+}
+
+#home a:hover {
+    background-color: white;
+}
+
+h2 {
+    color: var(--primary);
+    text-align: center;
+}
+
+#about {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px #00000015;
+}
+
+#about h3 {
+    color: var(--primary);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    margin: 20px auto;
+}
+
+th {
+    background-color: var(--primary);
+    color: white;
+    padding: 12px;
+}
+
+td {
+    padding: 12px;
+    text-align: center;
+}
+
+th,td {
+    border: 1px solid #dddddd;
+}
+
+tr:hover {
+    background-color: #FFF5CC;
+}
+
+select, input {
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+}
+
+select {
+    cursor:pointer;
+}
+
+
+#booking {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px #00000015;
+}
+
+form {
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+}
+
+form label {
+    font-weight: bold;
+    display:inline-block;
+    margin-top: 10px;
+}
+
+form input, form select {
+    width: 100%;
+}
+
+button {
+    background-color: var(--primary);
+    color:white;
+    padding: 12px 20px;
+    border:none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 8px 5px;
+}
+
+button:hover {
+    background: #174A7E;
+}
+
+
+aside {
+    max-width: 500px;
+    margin: 25px auto;
+    padding: 20px;
+    background-color:white;
+    border-left: 5px solid var(--accent);
+    border-radius: 8px;
+    box-shadow: 0 3px 10px #00000015;
+}
+
+
+#my-bookings {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px #00000015;
+}
+
+
+#guidelines article {
+    background-color: white;
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px #00000015;
+}
+
+#guidelines articles h3 {
+    color: var(--primary);
+}
+
+
+footer {
+    background-color: var(--primary);
+    color: white;
+    padding: 25px;
+}
+
+footer h3 {
+    color: var(--accent);
+}
+
+footer a {
+    color: var(--accent);
+    text-decoration:none;
+}
+
+footer a:hover {
+    color: white;
+}
