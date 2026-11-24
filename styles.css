@@ -320,6 +320,66 @@ footer a:hover {
     color: #d4af37;
 }
 
+.booking-summary {
+    max-width: 500px;
+    margin: 28px auto 0;
+    padding: 22px;
+    border: 1px solid #e5c400;
+    border-left: 5px solid var(--accent);
+    border-radius: 12px;
+    background: #fdfcf7;
+    box-shadow: 0 5px 18px #0b1f3a18;
+}
+
+.booking-summary h2 {
+    margin: 0 0 16px;
+    color: var(--primary);
+}
+
+.booking-summary-details {
+    margin: 0;
+}
+
+.booking-summary-details > div {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 9px 0;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.booking-summary-details dt {
+    font-weight: bold;
+}
+
+.booking-summary-details dd {
+    margin: 0;
+    text-align: right;
+}
+
+.booking-summary-total {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 18px 0 4px;
+    padding-top: 12px;
+    border-top: 2px solid var(--accent);
+    color: var(--primary);
+    font-size: 1.15rem;
+    font-weight: bold;
+}
+
+.booking-summary-total strong {
+    color: #956f00;
+    font-size: 1.35rem;
+}
+
+.booking-price-note {
+    margin: 8px 0 0;
+    color: #555;
+    font-size: 0.85rem;
+}
+
 
 /* ACTIVITY 5 - TOAST NOTIFICATIONS */
 

@@ -147,6 +147,43 @@
 
         </form>
 
+        <aside class="booking-summary" id="booking-summary" aria-live="polite">
+            <h2>Booking Summary</h2>
+            <p id="summary-placeholder">
+                Please select your match and ticket category to view your booking summary.
+            </p>
+
+            <div id="summary-content" hidden>
+                <dl class="booking-summary-details">
+                    <div>
+                        <dt>Customer Name</dt>
+                        <dd id="summary-name">Not entered</dd>
+                    </div>
+                    <div>
+                        <dt>Selected Match</dt>
+                        <dd id="summary-match">Not selected</dd>
+                    </div>
+                    <div>
+                        <dt>Stand Category</dt>
+                        <dd id="summary-stand">Not selected</dd>
+                    </div>
+                    <div>
+                        <dt>Number of Tickets</dt>
+                        <dd id="summary-quantity">0</dd>
+                    </div>
+                    <div>
+                        <dt>Price per Ticket</dt>
+                        <dd id="summary-unit-price">₹0</dd>
+                    </div>
+                </dl>
+
+                <p class="booking-summary-total">
+                    Total Price: <strong id="summary-total">₹0</strong>
+                </p>
+                <p class="booking-price-note">Sample prices for this academic project; not official IPL prices.</p>
+            </div>
+        </aside>
+
         <a href="index.html" class="back-link">
             ← Back to Home
         </a>

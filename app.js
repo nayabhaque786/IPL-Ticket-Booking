@@ -1,80 +1,130 @@
+const ticketPrices = {
+    General: 500,
+    Premium: 1000,
+    VIP: 2000,
+    Corporate: 3500
+};
 
-// ACTIVITY 5 - JavaScript Basics
+const rupeeFormatter = new Intl.NumberFormat("en-IN", {
+    style: "currency",
+    currency: "INR",
+    maximumFractionDigits: 0
+});
 
-// Reusable Toast Notification Function
+let toastTimeout;
+let toastRemovalTimeout;
+let summaryToastTimeout;
+
 function showToast(message, type = "success") {
+    const toastType = type === "error"
+        ? "error"
+        : type === "info" || type === "information"
+            ? "info"
+            : "success";
 
-    // Remove previous toast if it exists
-    const oldToast = document.querySelector(".toast");
-    if (oldToast) {
-        oldToast.remove();
+    window.clearTimeout(summaryToastTimeout);
+    window.clearTimeout(toastTimeout);
+    window.clearTimeout(toastRemovalTimeout);
+
+    const existingToast = document.querySelector(".toast");
+    if (existingToast) {
+        existingToast.remove();
     }
 
-    // Create toast element
     const toast = document.createElement("div");
-    toast.className = `toast ${type}`;
-
+    toast.className = `toast ${toastType}`;
+    toast.setAttribute("role", toastType === "error" ? "alert" : "status");
     toast.textContent = message;
-
-    // Add toast to webpage
     document.body.appendChild(toast);
 
-    // Show animation
-    setTimeout(() => {
+    toastTimeout = window.setTimeout(() => {
         toast.classList.add("show");
     }, 10);
 
-    // Remove toast after 3 seconds
-    setTimeout(() => {
+    toastRemovalTimeout = window.setTimeout(() => {
         toast.classList.remove("show");
-
-        setTimeout(() => {
-            toast.remove();
-        }, 400);
-
+        window.setTimeout(() => toast.remove(), 400);
     }, 3000);
 }
 
+function updateBookingSummary(showNotification = false) {
+    const summary = document.querySelector("#booking-summary");
+    const nameInput = document.getElementById("name");
+    const matchSelect = document.getElementById("match");
+    const standSelect = document.getElementById("stand");
+    const quantityInput = document.getElementById("tickets");
 
-// Book Button Functionality
-document.addEventListener("DOMContentLoaded", function () {
+    if (!summary || !nameInput || !matchSelect || !standSelect || !quantityInput) {
+        return;
+    }
 
-    const bookButtons = document.querySelectorAll(
-        ".book-btn, .book-button"
-    );
+    const summaryPlaceholder = summary.querySelector("#summary-placeholder");
+    const summaryContent = summary.querySelector("#summary-content");
+    const quantity = quantityInput.valueAsNumber;
+    const pricePerTicket = ticketPrices[standSelect.value];
 
-    bookButtons.forEach(button => {
+    if (!matchSelect.value || !pricePerTicket || !quantityInput.checkValidity()) {
+        summaryPlaceholder.hidden = false;
+        summaryContent.hidden = true;
+        window.clearTimeout(summaryToastTimeout);
+        return;
+    }
 
-        button.addEventListener("click", function (event) {
+    summary.querySelector("#summary-name").textContent = nameInput.value.trim() || "Not entered";
+    summary.querySelector("#summary-match").textContent =
+        matchSelect.selectedOptions[0].textContent;
+    summary.querySelector("#summary-stand").textContent =
+        standSelect.selectedOptions[0].textContent;
+    summary.querySelector("#summary-quantity").textContent = String(quantity);
+    summary.querySelector("#summary-unit-price").textContent =
+        rupeeFormatter.format(pricePerTicket);
+    summary.querySelector("#summary-total").textContent =
+        rupeeFormatter.format(pricePerTicket * quantity);
 
-            const bookingForm = document.querySelector(
-                "#booking, #booking-form, .booking-container"
-            );
+    summaryPlaceholder.hidden = true;
+    summaryContent.hidden = false;
 
-            if (bookingForm) {
-                event.preventDefault();
+    if (showNotification) {
+        window.clearTimeout(summaryToastTimeout);
+        summaryToastTimeout = window.setTimeout(() => {
+            showToast("Booking summary updated successfully!", "success");
+        }, 600);
+    }
+}
 
-                bookingForm.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start"
-                });
+document.addEventListener("DOMContentLoaded", () => {
+    const matchSelect = document.getElementById("match");
+    const standSelect = document.getElementById("stand");
+    const quantityInput = document.getElementById("tickets");
+    const nameInput = document.getElementById("name");
+    const bookingForm = document.querySelector(".booking-container form");
 
-                showToast(
-                    "Redirecting you to the booking section!",
-                    "success"
-                );
-            } else {
-                showToast(
-                    "Opening ticket booking!",
-                    "info"
-                );
-            }
-
+    if (matchSelect && standSelect && quantityInput && nameInput && bookingForm) {
+        matchSelect.addEventListener("change", () => updateBookingSummary(true));
+        standSelect.addEventListener("change", () => updateBookingSummary(true));
+        quantityInput.addEventListener("input", () => updateBookingSummary(true));
+        quantityInput.addEventListener("change", () => updateBookingSummary(true));
+        nameInput.addEventListener("input", () => updateBookingSummary());
+        bookingForm.addEventListener("reset", () => {
+            window.setTimeout(() => updateBookingSummary(), 0);
         });
+        updateBookingSummary();
+    }
 
-    });
+    document.querySelectorAll(".schedule-book-button, .book-btn, .book-button")
+        .forEach((button) => {
+            button.addEventListener("click", (event) => {
+                const bookingForm = document.querySelector(
+                    "#booking, #booking-form, .booking-container"
+                );
 
-    console.log("Activity 5 JavaScript loaded successfully!");
+                if (!bookingForm) {
+                    return;
+                }
+
+                event.preventDefault();
+                bookingForm.scrollIntoView({ behavior: "smooth", block: "start" });
+                showToast("Redirecting you to the booking section!", "success");
+            });
+        });
 });
-
-showToast("Activity 5 is working!", "success");
