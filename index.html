@@ -9,17 +9,28 @@
 <body>
 
     <!--1. Navigation Bar-->
-    <header>
-        <h1>Welcome to IPL 2026 Ticket Booking</h1>
+    <header class="site-header">
+        <a class="site-brand" href="#home" aria-label="IPL ticket booking home">
+            <span class="brand-mark" aria-hidden="true">IPL</span>
+            <h1>Welcome to IPL 2026 Ticket Booking</h1>
+        </a>
 
-        <nav>
+        <nav class="primary-navigation" id="primary-navigation" aria-label="Main navigation">
             <ul>
+                <li><a href="#home">Home</a></li>
                 <li><a href="#matches">Matches</a></li>
-                <li><a href="booking.html">Book Tickets</a></li>
-                <li><a href="#my-booking">My Booking</a></li>
+                <li><a href="booking.html">Book Ticket</a></li>
+                <li><a href="#my-bookings">My Bookings</a></li>
                 <li><a href="#guidelines">Guidelines</a></li>
             </ul>
         </nav>
+
+        <button class="nav-toggle" type="button" aria-controls="primary-navigation"
+            aria-expanded="false" aria-label="Open navigation menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </header>
 
     <!--2. Hero Section-->
@@ -72,140 +83,102 @@
 
 
     <!--4. Match Schedule-->
-    
-    <section id="matches">
+    <section id="matches" class="page-section">
         <h2>IPL 2026 Match Schedule</h2>
 
-        <table border="1" cellpadding="8">
+        <div class="match-controls">
+            <div class="team-filter">
+                <label for="Team">Filter matches by team:</label>
+                <select id="Team" name="Team">
+                    <option value="all">All Teams</option>
+                    <option value="RCB">RCB</option>
+                    <option value="CSK">CSK</option>
+                    <option value="MI">MI</option>
+                    <option value="KKR">KKR</option>
+                    <option value="SRH">SRH</option>
+                    <option value="RR">RR</option>
+                    <option value="GT">GT</option>
+                    <option value="DC">DC</option>
+                    <option value="PBKS">PBKS</option>
+                    <option value="LSG">LSG</option>
+                </select>
+            </div>
 
-            <thead>
-                <tr>
-                    <th>Match Number</th>
-                    <th>Teams</th>
-                    <th>Date & Time</th>
-                    <th>Venues</th>
-                    <th>General</th>
-                    <th>Premium</th>
-                    <th>VIP</th>
-                </tr>
-            </thead>
+            <div class="view-toggle" role="group" aria-label="Match display style">
+                <button class="view-button is-active" id="grid-view-button" type="button"
+                    aria-pressed="true">Grid View</button>
+                <button class="view-button" id="list-view-button" type="button"
+                    aria-pressed="false">List View</button>
+            </div>
+        </div>
 
-            <tbody>
-                <tr>
-                    <td>01</td>
-                    <td>CSK VS RCB</td>
-                    <td>10 April 2026, 7:30 PM</td>
-                    <td>M. Chinnaswamy Stadium - Bengaluru</td>
-                    <td>1000</td>
-                    <td>2500</td>
-                    <td>7000</td>
-                </tr>
+        <div class="match-grid" id="match-cards">
+            <article class="match-card" data-teams="CSK RCB">
+                <div class="match-card-heading">
+                    <span class="match-number">Match 01</span>
+                    <h3><span class="team-code">CSK</span> vs <span class="team-code">RCB</span></h3>
+                </div>
+                <div class="match-card-details">
+                    <p><strong>Date &amp; Time</strong><span>10 April 2026, 7:30 PM</span></p>
+                    <p><strong>Venue</strong><span>M. Chinnaswamy Stadium - Bengaluru</span></p>
+                </div>
+                <p class="match-pricing"><strong>Ticket prices</strong><span>General ₹1,000 · Premium ₹2,500 · VIP ₹7,000</span></p>
+                <a href="#booking" class="schedule-book-button">Book Now</a>
+            </article>
 
-                <tr>
-                    <td>02</td>
-                    <td>MI VS KKR</td>
-                    <td>11 April 2026, 3:30 PM</td>
-                    <td>Wankhede Stadium - Mumbai</td>
-                    <td>900</td>
-                    <td>2200</td>
-                    <td>5500</td>
-                </tr>
+            <article class="match-card" data-teams="MI KKR">
+                <div class="match-card-heading">
+                    <span class="match-number">Match 02</span>
+                    <h3><span class="team-code">MI</span> vs <span class="team-code">KKR</span></h3>
+                </div>
+                <div class="match-card-details">
+                    <p><strong>Date &amp; Time</strong><span>11 April 2026, 3:30 PM</span></p>
+                    <p><strong>Venue</strong><span>Wankhede Stadium - Mumbai</span></p>
+                </div>
+                <p class="match-pricing"><strong>Ticket prices</strong><span>General ₹900 · Premium ₹2,200 · VIP ₹5,500</span></p>
+                <a href="#booking" class="schedule-book-button">Book Now</a>
+            </article>
 
-                <tr>
-                    <td>03</td>
-                    <td>SRH VS GT</td>
-                    <td>11 April 2026, 7:30 PM</td>
-                    <td>Narendra Modi Stadium - Ahmedabad</td>
-                    <td>900</td>
-                    <td>2400</td>
-                    <td>5700</td>
-                </tr>
+            <article class="match-card" data-teams="SRH GT">
+                <div class="match-card-heading">
+                    <span class="match-number">Match 03</span>
+                    <h3><span class="team-code">SRH</span> vs <span class="team-code">GT</span></h3>
+                </div>
+                <div class="match-card-details">
+                    <p><strong>Date &amp; Time</strong><span>11 April 2026, 7:30 PM</span></p>
+                    <p><strong>Venue</strong><span>Narendra Modi Stadium - Ahmedabad</span></p>
+                </div>
+                <p class="match-pricing"><strong>Ticket prices</strong><span>General ₹900 · Premium ₹2,400 · VIP ₹5,700</span></p>
+                <a href="#booking" class="schedule-book-button">Book Now</a>
+            </article>
 
-                <tr>
-                    <td>04</td>
-                    <td>RR VS DC</td>
-                    <td>12 April 2026, 7:30 PM</td>
-                    <td>Arun Jaitley Stadium - Delhi</td>
-                    <td>800</td>
-                    <td>2000</td>
-                    <td>5000</td>
-                </tr>
+            <article class="match-card" data-teams="RR DC">
+                <div class="match-card-heading">
+                    <span class="match-number">Match 04</span>
+                    <h3><span class="team-code">RR</span> vs <span class="team-code">DC</span></h3>
+                </div>
+                <div class="match-card-details">
+                    <p><strong>Date &amp; Time</strong><span>12 April 2026, 7:30 PM</span></p>
+                    <p><strong>Venue</strong><span>Arun Jaitley Stadium - Delhi</span></p>
+                </div>
+                <p class="match-pricing"><strong>Ticket prices</strong><span>General ₹800 · Premium ₹2,000 · VIP ₹5,000</span></p>
+                <a href="#booking" class="schedule-book-button">Book Now</a>
+            </article>
 
-                <tr>
-                    <td>05</td>
-                    <td>CSK VS KKR</td>
-                    <td>13 April 2026, 7:30 PM</td>
-                    <td>MA Chidambaram Stadium - Chennai</td>
-                    <td>1000</td>
-                    <td>2500</td>
-                    <td>5600</td>
-                </tr>
-
-            </tbody>
-
-        </table>
-
-    </section>
-
-
-    <!--5. Team Filter-->
-    <section>
-
-        <h2>Filter Matches by Teams</h2>
-
-        <label for="Team">Select Team:</label>
-
-        <select id="Team" name="Team">
-            <option value="all">All</option>
-            <option value="CSK">Chennai Super Kings</option>
-            <option value="MI">Mumbai Indians</option>
-            <option value="RCB">Royal Challengers Bangalore</option>
-            <option value="KKR">Kolkata Knight Riders</option>
-            <option value="SRH">Sunrisers Hyderabad</option>
-            <option value="RR">Rajasthan Royals</option>
-            <option value="GT">Gujrat Titans</option>
-            <option value="DC">Delhi Capitals</option>
-            <option value="PBKS">Punjab Kings</option>
-            <option value="LSG">Lucknow Super Gaints</option>
-        </select>
-
-        <p>Choose a match from the Schedule & book ticket</p>
-
-        <h3>Book your favourite Match</h3>
-
-        <table border="1" cellpadding="8">
-            <tr>
-                <th>Matches</th>
-                <th>Action</th>
-            </tr>
-
-            <tr>
-                <td>CSK VS RCB</td>
-                <td><a href="#booking" class="schedule-book-button">Book</a></td>
-            </tr>
-
-            <tr>
-                <td>MI VS KKR</td>
-                <td><a href="#booking" class="schedule-book-button">Book</a></td>
-            </tr>
-
-            <tr>
-                <td>SRH VS GT</td>
-                <td><a href="#booking" class="schedule-book-button">Book</a></td>
-            </tr>
-
-            <tr>
-                <td>RR VS DC</td>
-                <td><a href="#booking" class="schedule-book-button">Book</a></td>
-            </tr>
-
-            <tr>
-                <td>CSK VS KKR</td>
-                <td><a href="#booking" class="schedule-book-button">Book</a></td>
-            </tr>
-
-        </table>
-
+            <article class="match-card" data-teams="CSK KKR">
+                <div class="match-card-heading">
+                    <span class="match-number">Match 05</span>
+                    <h3><span class="team-code">CSK</span> vs <span class="team-code">KKR</span></h3>
+                </div>
+                <div class="match-card-details">
+                    <p><strong>Date &amp; Time</strong><span>13 April 2026, 7:30 PM</span></p>
+                    <p><strong>Venue</strong><span>MA Chidambaram Stadium - Chennai</span></p>
+                </div>
+                <p class="match-pricing"><strong>Ticket prices</strong><span>General ₹1,000 · Premium ₹2,500 · VIP ₹5,600</span></p>
+                <a href="#booking" class="schedule-book-button">Book Now</a>
+            </article>
+        </div>
+        <p class="no-matches-message" id="no-matches-message" hidden>No matches found for this team.</p>
     </section>
 
 
@@ -330,34 +303,36 @@
 
 
         <!-- PART 9: GUIDELINES -->
-        <section id="guidelines">
+        <section id="guidelines" class="page-section">
 
             <h2>IPL Ticket Guidelines</h2>
 
-            <article>
-                <h3>1. Ticket Verification</h3>
-                <p>
-                    Carry your valid ticket or booking confirmation
-                    for verification at the stadium entrance.
-                </p>
-            </article>
+            <div class="guideline-grid">
+                <article>
+                    <h3>1. Ticket Verification</h3>
+                    <p>
+                        Carry your valid ticket or booking confirmation
+                        for verification at the stadium entrance.
+                    </p>
+                </article>
 
-            <article>
-                <h3>2. ID Proof Requirement</h3>
-                <p>
-                    Carry a valid photo ID if required by the stadium
-                    or ticketing provider.
-                </p>
-            </article>
+                <article>
+                    <h3>2. ID Proof Requirement</h3>
+                    <p>
+                        Carry a valid photo ID if required by the stadium
+                        or ticketing provider.
+                    </p>
+                </article>
 
-            <article>
-                <h3>3. Prohibited Items</h3>
-                <p>
-                    Weapons, fireworks and other restricted items
-                    may not be allowed inside the stadium.
-                    Check the official venue guidelines.
-                </p>
-            </article>
+                <article>
+                    <h3>3. Prohibited Items</h3>
+                    <p>
+                        Weapons, fireworks and other restricted items
+                        may not be allowed inside the stadium.
+                        Check the official venue guidelines.
+                    </p>
+                </article>
+            </div>
 
         </section>
 
