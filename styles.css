@@ -1,0 +1,387 @@
+:root {
+    --primary: #0B1F3A;
+    --accent: #FFD700;
+    --background: #F4F6F9;
+    --text: #222222;
+}
+
+* {
+    box-sizing:border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--background);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+section {
+    padding: 30px;
+    margin: 25px auto;
+}
+
+header {
+    background-color: var(--primary);
+    color: white;
+    padding: 15px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header h1 {
+    margin: 5px;
+    color: var(--accent);
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+nav li {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration:none;
+    font-weight:lighter;
+}
+
+nav ul li a:hover {
+    color: var(--accent);
+}
+
+#home {
+    max-width: 100%;
+    min-height: 300px;
+    background-color:cornsilk;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+#home h2 {
+    font-size: 35px;
+}
+
+#home a {
+    display:inline-block;
+    background-color: var(--accent);
+    color: var(--primary);
+    padding: 12px 25px;
+    margin: 20px;
+    border-radius: 9px;
+    text-decoration:none;
+    font-weight: bold;
+}
+
+#home a:hover {
+    background-color: white;
+}
+
+h2 {
+    color: var(--primary);
+    text-align: center;
+}
+
+#about {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px #00000015;
+}
+
+#about h3 {
+    color: var(--primary);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    margin: 20px auto;
+}
+
+th {
+    background-color: var(--primary);
+    color: white;
+    padding: 12px;
+}
+
+td {
+    padding: 12px;
+    text-align: center;
+}
+
+th,td {
+    border: 1px solid #dddddd;
+}
+
+tr:hover {
+    background-color: #FFF5CC;
+}
+
+select, input {
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+}
+
+select {
+    cursor:pointer;
+}
+
+
+#booking {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px #00000015;
+}
+
+form {
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+}
+
+form label {
+    font-weight: bold;
+    display:inline-block;
+    margin-top: 10px;
+}
+
+form input, form select {
+    width: 100%;
+}
+
+button {
+    background-color: var(--primary);
+    color:white;
+    padding: 12px 20px;
+    border:none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 8px 5px;
+}
+
+button:hover {
+    background: #174A7E;
+}
+
+
+aside {
+    max-width: 500px;
+    margin: 25px auto;
+    padding: 20px;
+    background-color:white;
+    border-left: 5px solid var(--accent);
+    border-radius: 8px;
+    box-shadow: 0 3px 10px #00000015;
+}
+
+
+#my-bookings {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px #00000015;
+}
+
+
+#guidelines article {
+    background-color: white;
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px #00000015;
+}
+
+#guidelines articles h3 {
+    color: var(--primary);
+}
+
+
+footer {
+    background-color: var(--primary);
+    color: white;
+    padding: 25px;
+}
+
+footer h3 {
+    color: var(--accent);
+}
+
+footer a {
+    color: var(--accent);
+    text-decoration:none;
+}
+
+footer a:hover {
+    color: white;
+}
+
+
+
+/* ACTIVITY 3 - BOOKING FORM */
+
+.booking-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #ffffff;
+    color: #172554;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.booking-container h2 {
+    text-align: center;
+    color: #172554;
+    margin-bottom: 25px;
+}
+
+.booking-container form > label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+
+.booking-container input:not([type="radio"]):not([type="checkbox"]),
+.booking-container select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 15px;
+}
+
+.booking-container input:focus,
+.booking-container select:focus {
+    outline: 2px solid #d4af37;
+    border-color: #d4af37;
+}
+
+.preference {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 10px 0;
+}
+
+.preference label {
+    font-weight: normal;
+}
+
+.form-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.form-buttons button {
+    flex: 1;
+    padding: 12px;
+    background: #172554;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.form-buttons button:hover {
+    background: #d4af37;
+    color: #172554;
+}
+
+.back-link {
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+    color: #172554;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.back-link:hover {
+    color: #d4af37;
+}
+
+/* ACTIVITY 5 - TOAST NOTIFICATIONS */
+
+.toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1100;
+    width: min(360px, calc(100vw - 40px));
+    pointer-events: none;
+}
+
+.toast {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 18px;
+    border: 1px solid var(--accent);
+    border-left: 5px solid var(--accent);
+    border-radius: 10px;
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 8px 24px #00000030;
+    opacity: 0;
+    transform: translateX(20px);
+    transition: opacity 250ms ease, transform 250ms ease;
+}
+
+.toast.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.toast.is-hiding {
+    opacity: 0;
+    transform: translateX(20px);
+}
+
+.toast::before {
+    content: "";
+    flex: 0 0 10px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+}
+
+.toast--error {
+    border-color: #ff7b7b;
+}
+
+.toast--error::before {
+    background: #ff7b7b;
+}
+
+.toast--information::before {
+    background: #80c9ff;
+}
+
+@media (max-width: 600px) {
+    .toast-container {
+        top: 12px;
+        right: 12px;
+        width: calc(100vw - 24px);
+    }
+}
